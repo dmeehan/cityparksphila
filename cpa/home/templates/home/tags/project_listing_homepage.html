@@ -1,0 +1,16 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% if projects %}
+  <ul>
+      {% for project in projects %}
+        <li>
+            {% if project.main_image %}
+            <a href="{% pageurl project %}">
+              {% image project.main_image fill-400x400 as img %}
+              <img src="{{ img.url }}" />
+            </a>
+            {% endif %}
+            <h3>{{ project.title }}</h3>
+        </li>
+      {% endfor %}
+  </ul>
+{% endif %}

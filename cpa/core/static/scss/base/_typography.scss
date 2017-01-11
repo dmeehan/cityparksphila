@@ -1,0 +1,63 @@
+body {
+  color: $color-font-base;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family-heading;
+  line-height: $line-height-heading;
+  margin: 0 0 $spacing-small;
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.25rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+p {
+  margin: 0 0 $spacing-small;
+}
+
+a {
+  color: $color-action;
+  text-decoration: none;
+  transition: color $animation-duration-base $animation-timing-base;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: shade($color-action, 25%);
+  }
+}
+
+hr {
+  border-bottom: $border-base;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  margin: $spacing-base 0;
+}

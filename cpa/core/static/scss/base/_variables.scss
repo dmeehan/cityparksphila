@@ -1,0 +1,59 @@
+// Breakpoints
+$screen-medium: 600px;
+$screen-large: 900px;
+
+// Typography
+$font-family-base: 'Merriweather', Georgia, serif;
+$font-family-heading: 'Raleway', Helvetica, Arial, sans-serif;
+
+// Font Sizes
+$font-size-base: 1em;
+$font-size-small: 0.875em;
+
+// Line height
+$line-height-base: 1.5;
+$line-height-heading: 1.2;
+
+// Other Sizes
+$border-radius-base: 3px;
+$spacing-base: $line-height-base * 1em;
+$spacing-small: $spacing-base / 2;
+$z-index-base: 0;
+
+// Colors
+$blue: #1565c0;
+$dark-gray: #474743;
+$medium-gray: #74746d;
+$light-gray: #f2f2e6;
+
+
+$color-primary: #2e8383;
+$color-secondary: #a0cc48;
+$color-accent: #db4d4d;
+$color-wash: #f2f2e6;
+
+$color-alert: red;
+$color-success: green;
+$color-notice: $color-primary;
+$color-error: red;
+
+
+// Font Colors
+$color-font-base: $dark-gray;
+$color-action: $color-accent;
+
+// Border
+$color-border-base: $light-gray;
+$border-base: 1px solid $color-border-base;
+
+// Background Colors
+$color-background-base: #fff;
+$color-background-secondary: tint($color-border-base, 75%);
+
+// Forms
+$box-shadow-form: inset 0 1px 3px rgba(#000, 0.06);
+$box-shadow-form-focus: $box-shadow-form, 0 0 5px adjust-color($color-action, $lightness: -5%, $alpha: -0.3);
+
+// Animations
+$animation-duration-base: 150ms;
+$animation-timing-base: ease;

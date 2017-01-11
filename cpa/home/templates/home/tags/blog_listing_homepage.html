@@ -1,0 +1,23 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% if blogpages %}
+  <ul>
+      {% for post in blogpages %}
+        <li>
+            {% with post.main_image as main_image %}
+                {% if main_image %}
+                <a href="{% pageurl post %}">
+                    {% image main_image fill-453x240 as img %}
+                    <img src="{{ img.src }}" alt="{{ img.caption }}" />
+                </a>
+                {% endif %}
+            {% endwith %}
+            <h3>
+                <a href="{% pageurl post %}">
+                    {{ post.title }}
+                </a>
+            </h3>
+            <p>{{ post.intro }}</p>
+        </li>
+      {% endfor %}
+  </ul>
+{% endif %}

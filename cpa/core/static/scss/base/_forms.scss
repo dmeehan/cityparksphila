@@ -1,0 +1,88 @@
+fieldset {
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  font-weight: 600;
+  margin-bottom: $spacing-small / 2;
+  padding: 0;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: $spacing-small / 2;
+  font-family: $font-family-heading;
+}
+
+input,
+select,
+textarea {
+  display: block;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+}
+
+#{$all-text-inputs},
+select[multiple] {
+  background-color: $color-background-base;
+  border: $border-base;
+  border-radius: $border-radius-base;
+  box-shadow: $box-shadow-form;
+  box-sizing: border-box;
+  margin-bottom: $spacing-small;
+  padding: $spacing-base / 3;
+  transition: border-color $animation-duration-base $animation-timing-base;
+  width: 100%;
+
+  &:hover {
+    border-color: shade($color-border-base, 20%);
+  }
+
+  &:focus {
+    border-color: $color-action;
+    box-shadow: $box-shadow-form-focus;
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: shade($color-background-base, 5%);
+    cursor: not-allowed;
+
+    &:hover {
+      border: $border-base;
+    }
+  }
+
+  &::placeholder {
+    color: $medium-gray;
+  }
+}
+
+textarea {
+  resize: vertical;
+}
+
+[type="search"] {
+  appearance: none;
+}
+
+[type="checkbox"],
+[type="radio"] {
+  display: inline;
+  margin-right: $spacing-small / 2;
+}
+
+[type="file"] {
+  margin-bottom: $spacing-small;
+  width: 100%;
+}
+
+select {
+  margin-bottom: $spacing-small;
+  max-width: 100%;
+  width: auto;
+}

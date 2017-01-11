@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags home_tags %}
+
+{% block body_class %}body--home{% endblock %}
+
+{% block content %}
+    <main>
+        <section class="banner">
+            {% if page.banner_items %}
+                <ul>
+                {% for banner_item in page.banner_items.all %}
+                    <li>
+                        {% if banner_item.link_page %}
+                        <a href="{{ banner_item.link_page.url }}">
+                        {% endif %}
+                            
+                            {% image banner_item.image fill-640x400 %}
+
+                        {% if banner_item.link_page %}
+                        </a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </section>
+        {% if page.body %}
+        <section class="content">
+            {% include "home/includes/streamfield.html" with content=page.body %}
+        </section>
+        {% endif %}
+        <section class="projects">
+            <h2 class="heading-divider">Projects</h2>
+            <div class="project-list">
+                {% project_listing_homepage %}
+                <a href="#">View All Projects</a>
+            </div>
+        </section>
+        <section class="of-interest">
+            <h2 class="heading-divider">Of Interest</h2>
+            {% blog_listing_homepage %}
+        </section>
+    </main>
+{% endblock %}

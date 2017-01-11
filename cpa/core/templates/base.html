@@ -1,0 +1,81 @@
+{% load static wagtailuserbar %}
+{% load compress %}
+{% load form_tags %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {# Global stylesheets #}
+        {% compress css %}
+        <link rel="stylesheet" type="text/x-scss" href="{% static "scss/app.scss" %}" />
+        {% endcompress %}
+
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}">
+        {% wagtailuserbar %}
+        <header>
+            <div>
+                <h1 class="logo"><a href="/"><span>City Parks Association</span></a></h1>
+                <nav>
+                    <ul>
+                        <li class="nav-about"><a href="/about">About</a></li>
+                        <li class="nav-projects"><a href="/projects">Projects</a></li>
+                        <li class="nav-blog"><a href="/of-interest">Of Interest</a></li>
+                        <li class="nav-resources"><a href="/resources">Resources</a></li>
+                        <li class="nav-contact"><a href="/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        {% block content %}{% endblock %}
+
+        <footer>
+            <section class="contact">
+                <h2 class="heading-divider inverse">Contact</h2>
+                
+                <div class="contact-address">
+                    <p>
+                    {% if settings.contact.ContactInformation.title %}
+                    {{ settings.contact.ContactInformation.title }}<br />
+                    {% endif %}
+                    {% if settings.contact.ContactInformation.address_1 %}
+                    {{ settings.contact.ContactInformation.address_1 }}<br />
+                    {% endif %}
+                    {% if settings.contact.ContactInformation.address_2 %}
+                    {{ settings.contact.ContactInformation.address_2 }}<br />
+                    {% endif %}
+                    {% if settings.contact.ContactInformation.city %}
+                    {{ settings.contact.ContactInformation.city }}{% endif %}{% if settings.contact.ContactInformation.state %}, {% endif %}{% if settings.contact.ContactInformation.state %}{{ settings.contact.ContactInformation.state }}{% endif %}
+                    {% if settings.contact.ContactInformation.zip_code %} {{ settings.contact.ContactInformation.zip_code }}{% endif %}
+
+                    {% if settings.contact.ContactInformation.email %}<p>{{ settings.contact.ContactInformation.email }}</p>{% endif %}
+
+                    {% if settings.contact.ContactInformation.phone %}<p>{{ settings.contact.ContactInformation.phone }}</p>{% endif %}
+                </div>
+                <div class="contact-form">
+                    {% form slug="contact" %}
+                </div>
+            </section>
+        </footer>
+
+        {# Global javascript #}
+        
+
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,312 @@
+@import "bourbon/bourbon";
+@import "base/base";
+@import "neat/neat";
+
+@import "components/badges";
+
+body {
+    //@include display(flex);
+    //@include flex-direction(column);
+    //min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: $color-wash;
+
+    > header {
+        padding: $spacing-base 0;
+        background: lighten($color-wash, 5%);
+       
+        > div {
+            @include display(flex);
+            @include align-items(center);
+            max-width: 1388px;
+            margin: 0 auto;
+        }
+        
+
+        .logo {
+            margin: 0;
+            line-height: 1;
+
+            > a {
+                @include display(flex);
+                @include align-items(center);
+                
+
+                &::before {
+                    padding: 0.5rem 0.75rem;
+                    margin-right: 0.5rem;
+                    font-family: 'Nunito', Helvetica, Arial, sans-serif;
+                    font-weight: 100;
+                    font-size: 2.5rem;
+                    color: lighten($color-wash, 5%);
+                    background: $color-primary;
+                    border-radius: 0.25rem;
+                    content: 'CPA';
+                }
+
+                span {
+                    font-size: 1.25rem;
+                    margin-bottom: 0;
+                    font-family: 'Nunito', Helvetica, Arial, sans-serif;
+                    text-transform: uppercase;
+                    color: $dark-gray;
+                    line-height: 1;
+                    font-weight: 600;
+                    display: block;
+                    color: $medium-gray;
+                }
+            }
+
+            
+        }
+
+        nav {
+            margin-left: auto;
+            ul {
+                @include display(flex);
+                li {
+                    padding: 0 $spacing-small;
+                }
+            }
+        }
+        //background: shade($color-wash, 30%);
+    }
+
+    > main {
+        //@include flex(1);
+
+        > section {
+            padding-top: 3em;
+            max-width: 1388px;
+            margin: 0 auto;
+        }
+    }
+
+    > footer {
+        padding: 3em 0;
+        background: #74746d;
+
+        margin-top: 3rem;
+
+        > section {
+            max-width: 1388px;
+            margin: 0 auto;
+        }
+    }
+}
+
+.banner {
+    @include display(flex);
+    max-width: none;
+    height: 400px;
+    background: rgba(0, 0, 0, 0.5);
+    padding-top: 0;
+
+    ul {
+        @include flex(1);
+        @include display(flex);
+        > li {
+            @include transition(all 0.5s ease-in-out);
+            @include flex(1 1 40px);
+            position: relative;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+
+            &:hover {
+                @include flex(0 0 640px);
+                @include transition(all 0.5s ease-in-out);
+            }
+
+            > img {
+                position: absolute;
+                width: auto;
+                height: auto;
+                max-width: none;
+            }
+
+
+
+        }
+    }
+}
+
+.content {
+    .link-block {
+        display: block;
+        text-align: right;
+        
+        &::after {
+            content: "\00BB";
+            margin-left: 0.25rem;
+        }
+
+    }
+}
+
+.streamfield {
+    h2 {
+       padding-top: 0.5em;
+        border-top: 1px solid $color-accent;
+        font-color: $medium-gray;
+        font-size: 1em;
+        line-height: 1;
+        text-transform: uppercase;
+        font-weight: 700;
+
+        &.inverse {
+            color: white;
+            border-color: white;
+        } 
+    }
+
+    .intro {
+        font-family: $font-family-heading;
+        font-size: 1.5em;
+        font-weight: 500;
+        font-style: italic;
+        line-height: 1.8;
+        text-align: center;
+        max-width: 1100px;
+        margin: 3em auto;
+    }
+}
+
+.heading-divider {
+    padding-top: 0.5em;
+    border-top: 1px solid $color-accent;
+    font-color: $medium-gray;
+    font-size: 1em;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 700;
+
+    &.inverse {
+        color: white;
+        border-color: white;
+    } 
+}
+
+.pullquote {
+    font-family: $font-family-heading;
+    font-size: 1.5em;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.8;
+}
+
+.about-mission {
+    text-align: center;
+    max-width: 1100px;
+    margin: 3em auto;
+}
+
+.projects {
+    .heading-divider {
+        margin-bottom: 2em;
+    }
+}
+
+.project-list {
+    background: white;
+    padding: 1.25rem;
+
+
+
+    ul {
+        @include display(flex);
+
+        > li {
+            @include flex(1);
+            margin-right: 1.25rem;
+            position: relative;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            img {
+                display: block;
+            }
+
+            h3 {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                color: white;
+                font-family: $font-family-heading;
+                font-size: 1em;
+                font-style: italic;
+                font-weight: 500;
+                margin: 0 .5em .5em 0;
+            }
+        }
+    }
+
+    > a {
+        margin-top: 1.25rem;
+        display: block;
+        text-align: right;
+
+        &::after {
+            content: "\00BB";
+            margin-left: 0.25rem;
+        }
+    }
+}
+
+.of-interest {
+    .heading-divider {
+        margin-bottom: 2em;
+    }
+    
+    ul {
+      @include display(flex); 
+      
+      > li {
+            @include flex(1);
+            margin-right: 1.25rem;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            img {
+                border: 0;
+                display: block;
+                height: 220px;
+                width: 100%;
+                background: $dark-gray;
+                margin-bottom: 1rem;
+            }
+       } 
+    }
+}
+
+.contact {
+    @include clearfix;
+}
+
+.contact-form, .contact-address {
+    float: left;
+    width: 50%;
+    padding-top: 4rem;
+}
+
+.contact-form {
+    label {
+        color: white;
+        font-weight: 100;
+    }
+}
+
+.contact-address {
+    font-family: $font-family-heading;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 100;
+}
+
+
+

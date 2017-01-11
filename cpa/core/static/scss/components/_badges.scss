@@ -1,0 +1,22 @@
+$badges: (
+  "alert": $color-alert,
+  "default": $color-secondary,
+  "error": $color-error,
+  "notice": $color-notice,
+  "success": $color-success,
+) !default;
+
+@each $badge-type, $color in $badges {
+  .badge--#{$badge-type} {
+    background-color: $color;
+    border-radius: $font-size-small * 5;
+    color: darken($color, 60%);
+    //color: white;
+    font-family: $font-family-heading;
+    font-weight: 700;
+    display: inline-block;
+    font-size: $font-size-small;
+    line-height: 1;
+    padding: 0.4em 1.2em;
+  }
+}
