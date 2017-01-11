@@ -37,7 +37,7 @@ EMAIL_PORT = '587'
 EMAIL_USE_TLS = 'True'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-subject-prefix
-EMAIL_SUBJECT_PREFIX = '[%s] ' % SITE_NAME
+EMAIL_SUBJECT_PREFIX = 'City Parks Association'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#server-email
 SERVER_EMAIL = 'admin@cityparksphila.org'
