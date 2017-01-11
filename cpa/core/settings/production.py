@@ -50,7 +50,7 @@ DEFAULT_FROM_EMAIL = 'City Parks Association of Philadelphia <info@cityparksphil
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('DJANGO_DB_NAME', ''),
         'USER': os.environ.get('DJANGO_DB_USER', ''),
         'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD', ''),
