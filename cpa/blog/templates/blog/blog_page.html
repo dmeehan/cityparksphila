@@ -8,6 +8,13 @@
 <main>
     <section>
         <h1>{{ page.title }}</h1>
+        {% if page.tags.all.count %}
+        <div class="tags">
+            {% for tag in page.tags.all %}
+                <a href="{% slugurl 'tags' %}?tag={{ tag }}"><span class="badge--default">{{ tag }}  {{tag.num_times}} </span></a>
+            {% endfor %}
+        </div>
+        {% endif %}
         <p class="meta">{{ page.date }}</p>
 
         <div class="intro">{{ page.intro }}</div>
@@ -21,14 +28,7 @@
             </div>
         {% endfor %}
 
-        {% if page.tags.all.count %}
-        <div class="tags">
-            <h3>Tags</h3>
-            {% for tag in page.tags.all %}
-                <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
-            {% endfor %}
-        </div>
-        {% endif %}
+        
 
         <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
     </section>

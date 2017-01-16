@@ -50,9 +50,12 @@ INSTALLED_APPS = [
     'wagtail.contrib.settings',
     'wagtail.contrib.wagtailstyleguide',
 
-    "compressor",
+    'compressor',
+    'djsupervisor',
     'modelcluster',
     'taggit',
+    'taggit_templatetags2',
+    
 
     'django.contrib.admin',
     'django.contrib.auth',

@@ -1,6 +1,6 @@
  {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags taggit_templatetags2_tags %}
 
 {% block body_class %}body--blog{% endblock %}
 
@@ -22,6 +22,14 @@
             <p>{{ post.intro }}</p>
         {% endwith %}
         {% endfor %}
+        <aside>
+            {% get_taglist as tags for 'blog.BlogPage' %}
+            <ul>
+                {% for tag in tags %}
+                <li><a href="{% slugurl 'tags' %}?tag={{ tag }}"><span class="badge--default">{{ tag }}  {{tag.num_times}} </span></a></li>
+                {% endfor %}
+            </ul>
+        </aside>
     </section>
 </main>
 {% endblock %}
