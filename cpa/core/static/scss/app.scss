@@ -117,10 +117,17 @@ body {
             &:hover {
                 @include flex(0 0 640px);
                 @include transition(all 0.5s ease-in-out);
+
+                img {
+                    @include transition(all 0.5s ease-in-out);
+                    left: 0;
+                }
             }
 
             > img {
+                @include transition(all 0.5s ease-in-out);
                 position: absolute;
+                left: -50%;
                 width: auto;
                 height: auto;
                 max-width: none;
