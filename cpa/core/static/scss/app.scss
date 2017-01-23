@@ -131,6 +131,14 @@ body {
                 > img {
                     left: 0;
                 }
+
+                &:hover {
+                    @include flex(0 0 640px);
+                    
+                    img {
+                        left: 0;
+                    }
+                }
             }
 
             &:hover {
