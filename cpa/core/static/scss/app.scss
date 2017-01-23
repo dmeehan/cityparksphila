@@ -128,7 +128,7 @@ body {
                 }
             }
 
-            &::nth-child(5) {
+            &:nth-child(5) {
                 @include flex(0 0 640px);
             }
 
