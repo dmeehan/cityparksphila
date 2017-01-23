@@ -9,7 +9,7 @@ DEBUG = True
 #==============================================================================
 # Site
 #==============================================================================
-ALLOWED_HOSTS = ['dev.cityparksphila.org', 'cityparksphila.org', 'www.cityparksphila.org', 'dev.cityparksphila.org', 'smtp.webfaction.com']
+ALLOWED_HOSTS = ['cityparksphila.org', 'www.cityparksphila.org', 'dev.cityparksphila.org', 'smtp.webfaction.com']
 
 BASE_URL = 'http://cityparksphila.org'
 
@@ -68,7 +68,7 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': '127.0.0.1:31095',
+        'LOCATION': 'redis://127.0.0.1:31095',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
