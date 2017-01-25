@@ -128,14 +128,14 @@ body {
             &:nth-child(5) {
                 @include flex(0 0 640px);
 
-                > img {
+                > img, > a {
                     left: 0;
                 }
 
                 &:hover {
                     @include flex(0 0 640px);
                     
-                    img {
+                    > a, > img {
                         left: 0;
                     }
                 }
@@ -145,7 +145,7 @@ body {
                 @include flex(0 0 640px);
                 @include transition(all 0.5s ease-in-out);
 
-                img {
+                > a, > img {
                     @include transition(all 0.5s ease-in-out);
                     left: 0;
                 }
@@ -276,6 +276,7 @@ body {
                 position: relative;
 
                 &::after {
+                    content: '';
                     position: absolute;
                     top: 0;
                     left: 0;
