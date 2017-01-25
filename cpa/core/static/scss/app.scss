@@ -276,7 +276,7 @@ body {
                 position: relative;
 
                 &::after {
-                    @include linear-gradient(to top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 50%);
+                    @include linear-gradient(to top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 33%);
                     display: block;
                     content: '';
                     position: absolute;
