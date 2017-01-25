@@ -151,7 +151,7 @@ body {
                 }
             }
 
-            > img {
+            > a, > img {
                 @include transition(all 0.5s ease-in-out);
                 position: absolute;
                 left: -320px;
@@ -271,6 +271,19 @@ body {
                 margin-right: 0;
             }
 
+            > a {
+                display: block;
+                position: relative;
+
+                &::after {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    @include linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 100%);
+                }
+            }
+
             img {
                 display: block;
             }
@@ -286,6 +299,8 @@ body {
                 font-weight: 500;
                 margin: 0 .5em .5em 0;
             }
+
+            
         }
     }
 
