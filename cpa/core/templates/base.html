@@ -34,7 +34,7 @@
                         <li class="nav-projects"><a href="/projects">Projects</a></li>
                         <li class="nav-blog"><a href="/of-interest">Of Interest</a></li>
                         <li class="nav-resources"><a href="/resources">Resources</a></li>
-                        <li class="nav-contact"><a href="/contact">Contact</a></li>
+                        <li class="nav-contact"><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -42,7 +42,7 @@
 
         {% block content %}{% endblock %}
 
-        <footer>
+        <footer id="contact">
             <section class="contact">
                 <h2 class="heading-divider inverse">Contact</h2>
                 
@@ -72,7 +72,22 @@
         </footer>
 
         {# Global javascript #}
-        
+        <script>
+            $(function() {
+              $('a[href*="#"]:not([href="#"])').click(function() {
+                if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                  var target = $(this.hash);
+                  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                  if (target.length) {
+                    $('html, body').animate({
+                      scrollTop: target.offset().top
+                    }, 500);
+                    return false;
+                  }
+                }
+              });
+            });
+        </script>
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
