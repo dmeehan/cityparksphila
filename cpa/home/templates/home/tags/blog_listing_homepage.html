@@ -7,7 +7,7 @@
                 {% if main_image %}
                 <a href="{% pageurl post %}">
                     {% image main_image fill-453x240 as img %}
-                    <img src="{{ img.src }}" alt="{{ img.caption }}" />
+                    <img src="{{ img.url }}" alt="{{ img.caption }}" />
                 </a>
                 {% endif %}
             {% endwith %}
