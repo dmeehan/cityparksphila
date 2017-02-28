@@ -287,6 +287,17 @@ body {
     }
 }
 
+.project-index {
+    .project {
+        background: white;
+        padding: 1.25rem;
+
+        .project-content {
+            @include display(flex);
+        }
+    }
+}
+
 .project-list {
     background: white;
     padding: 1.25rem;

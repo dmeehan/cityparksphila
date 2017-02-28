@@ -10,21 +10,21 @@
         <h1>{{ page.title }}</h1>
 
         <div class="intro">{{ page.intro|richtext }}</div>
-        <div class="project-list">
+        <div class="project-index">
             {% for project in projects %}
             {% with project=project.specific %}
+            <div class="project">
+                <h2><a href="{% pageurl project %}">{{ project.title }}</a></h2>
+                <div class="project-content">
+                {% with project.main_image as main_image %}
+                    {% if main_image %}{% image main_image width-426 %}{% endif %}
+                {% endwith %}
 
-            <h2><a href="{% pageurl project %}">{{ project.title }}</a></h2>
-            <article>
-            {% with project.main_image as main_image %}
-                {% if main_image %}{% image main_image width-426 %}{% endif %}
-            {% endwith %}
-
-            <p>{{ project.intro }}</p>
-            </article>
+                <p>{{ project.intro }}</p>
+                </div>
+            </div>
         {% endwith %}
         {% endfor %}
-
         </div>
         
     </section>
