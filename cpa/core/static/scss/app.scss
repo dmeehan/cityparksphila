@@ -296,7 +296,7 @@ body {
             @include display(flex);
 
             img {
-                @include flex(none);
+                max-width: none;
             }
         }
     }
