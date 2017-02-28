@@ -23,8 +23,8 @@ class ProjectsIndexPage(Page):
     def get_context(self, request):
         # Update context to include only published projects, ordered by reverse-chron
         context = super(ProjectsIndexPage, self).get_context(request)
-        projectpages = self.get_children().live().order_by('-date')
-        context['projectpages'] = projectpages
+        projects = self.get_children().live().order_by('-date')
+        context['projects'] = projects
         return context
 
 class ProjectPageTag(TaggedItemBase):
