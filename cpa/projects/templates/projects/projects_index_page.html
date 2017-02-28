@@ -22,8 +22,8 @@
                     <div class="project-content">
                         <h2><a href="{% pageurl project %}">{{ project.title }}</a></h2>
                         <div class="intro">{{ project.intro|richtext }}</div>
+                        <a href="{% pageurl project %}">Read More</a>
                     </div>
-                </div>
             </div>
         {% endwith %}
         {% endfor %}
