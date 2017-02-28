@@ -18,6 +18,7 @@ class AboutPageStreamBlock(StreamBlock):
     h2 = CharBlock(icon="title", classname="title")
     h3 = CharBlock(icon="title", classname="title")
     h4 = CharBlock(icon="title", classname="title")
+    intro = RichTextBlock(icon="pilcrow")
     paragraph = RichTextBlock(icon="pilcrow")
     aligned_image = ImageBlock(label="Aligned image", icon="image")
 
