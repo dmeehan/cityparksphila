@@ -188,14 +188,14 @@ body {
 .rich-text {
     ul {
         list-style-type: disc;
-        margin-bottom: $small-spacing;
-        padding-left: $base-spacing;
+        margin-bottom: $spacing-small;
+        padding-left: $spacing-base;
     }
 
     ol {
         list-style-type: decimal;
-        margin-bottom: $small-spacing;
-        padding-left: $base-spacing; 
+        margin-bottom: $spacing-small;
+        padding-left: $spacing-base; 
     }
 }
 
