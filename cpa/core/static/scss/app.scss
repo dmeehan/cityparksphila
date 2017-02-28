@@ -294,6 +294,10 @@ body {
 
         .project-content {
             @include display(flex);
+
+            img {
+                @include flex(none);
+            }
         }
     }
 }
