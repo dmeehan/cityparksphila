@@ -187,13 +187,14 @@ body {
 
 .streamfield {
     h2 {
-       padding-top: 0.5em;
+        padding-top: 0.5em;
         border-top: 1px solid $color-accent;
         font-color: $medium-gray;
         font-size: 1em;
         line-height: 1;
         text-transform: uppercase;
         font-weight: 700;
+        margin: 2em 0;
 
         &.inverse {
             color: white;
