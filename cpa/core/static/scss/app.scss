@@ -291,10 +291,10 @@ body {
     .project {
         background: white;
         padding: 1.25rem;
-
+        margin-bottom: 2em;
+        @include display(flex);
+        
         .project-content {
-            @include display(flex);
-
             img {
                 max-width: none;
             }

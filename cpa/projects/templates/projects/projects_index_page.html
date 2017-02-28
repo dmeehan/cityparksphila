@@ -12,14 +12,17 @@
             {% for project in projects %}
             {% with project=project.specific %}
             <div class="project">
-                <h2><a href="{% pageurl project %}">{{ project.title }}</a></h2>
-                <div class="project-content">
                     {% with project.main_image as main_image %}
                         {% if main_image %}
+                        <div class="project-image">
                             <a href="{% pageurl project %}">{% image main_image width-683 %}</a>
+                        </div>
                         {% endif %}
                     {% endwith %}
-                    <div class="intro">{{ project.intro|richtext }}</div>
+                    <div class="project-content">
+                        <h2><a href="{% pageurl project %}">{{ project.title }}</a></h2>
+                        <div class="intro">{{ project.intro|richtext }}</div>
+                    </div>
                 </div>
             </div>
         {% endwith %}
