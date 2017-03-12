@@ -1,4 +1,4 @@
- {% extends "base.html" %}
+{% extends "base.html" %}
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
@@ -15,14 +15,17 @@
                     {% with project.main_image as main_image %}
                         {% if main_image %}
                         <div class="project-image">
-                            <a href="{% pageurl project %}">{% image main_image width-683 %}</a>
+                            <a href="{% pageurl project %}">
+                                {% image main_image width-683 as img %}
+                                <img src="{{ img.url }}" />
+                            </a>
                         </div>
                         {% endif %}
                     {% endwith %}
                     <div class="project-content">
                         <h2><a href="{% pageurl project %}">{{ project.title }}</a></h2>
                         <div class="intro">{{ project.intro|richtext }}</div>
-                        <a href="{% pageurl project %}">Read More</a>
+                        <a class="more-link" href="{% pageurl project %}">Read More</a>
                     </div>
             </div>
         {% endwith %}

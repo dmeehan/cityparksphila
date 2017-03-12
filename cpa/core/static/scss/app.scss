@@ -241,6 +241,13 @@ body {
     }
 }
 
+.more-link {
+    &::after {
+        content: "\00BB";
+        margin-left: 0.25rem;
+    }
+}
+
 .intro {
     font-family: $font-family-heading;
     font-size: 1.5em;
@@ -289,14 +296,31 @@ body {
 
 .project-index {
     .project {
-        background: white;
-        padding: 1.25rem;
+        //background: white;
+        //padding: 1.25rem;
         margin-bottom: 2em;
         @include display(flex);
+
+        .project-image {
+            width: 50%;
+
+            img {
+                //max-width: none;
+                //width: 100%;
+            }
+        }
         
         .project-content {
-            img {
-                max-width: none;
+            @include display(flex);
+            @include flex-direction(column);
+            @include justify-content(space-between);
+            width: 50%;
+            padding-left: $spacing-base;
+
+            .intro {
+                text-align: left;
+                margin: 0;
+                padding: 0;
             }
         }
     }
