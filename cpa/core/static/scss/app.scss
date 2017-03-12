@@ -296,7 +296,7 @@ body {
 
 .project-index {
     .project {
-        //background: white;
+        background: white;
         //padding: 1.25rem;
         margin-bottom: 2em;
         @include display(flex);
@@ -305,6 +305,7 @@ body {
             width: 50%;
 
             img {
+                display: block;
                 //max-width: none;
                 //width: 100%;
             }
@@ -315,7 +316,7 @@ body {
             @include flex-direction(column);
             @include justify-content(space-between);
             width: 50%;
-            padding-left: $spacing-base;
+            padding: $spacing-base;
 
             .intro {
                 text-align: left;
