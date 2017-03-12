@@ -9,33 +9,44 @@
     <section class="project">
         <header>
             <h1>{{ page.title }}</h1>
+            {% if page.tags.all.count %}
+                <ul class="tags">
+            {% for tag in page.tags.all %}
+                    <li>
+                        <a href="{% slugurl 'tags' %}?tag={{ tag }}"><span class="badge--default">{{ tag }}</span></a>
+                    </li>
+            {% endfor %}
+                <ul>
+            {% endif %}
         </header>
-        <div>
+        <div class="project-gallery">
         {% for item in page.gallery_images.all %}
             <div>
                 {% image item.image width-1366 as img %}
                 <img src="{{ img.url }}" />
-                <p>{{ item.caption }}</p>
             </div>
         {% endfor %}
         </div>
-        <div class="intro">{{ page.intro|richtext }}</div>
+        <div class="project-intro">{{ page.intro|richtext }}</div>
         <div class="project-detail">
             <div class="description">
                 {{ page.description|richtext }}
             </div>
             <aside class="meta">
+            {% if page.date %}
+                <h2>Date</h2>
                 <p class="meta">{{ page.date }}</p>
-                {% if page.tags.all.count %}
+            {% endif %}
+            {% if page.tags.all.count %}
+                <h2>Tags</h2>
                 <div class="tags">
                     {% for tag in page.tags.all %}
                         <a href="{% slugurl 'tags' %}?tag={{ tag }}"><span class="badge--default">{{ tag }}</span></a>
                     {% endfor %}
                 </div>
-                {% endif %}
+            {% endif %}
             </aside>
         </div>
-        <p><a href="{{ page.get_parent.url }}">Return to Projects</a></p>
     </section>
 </main>
 {% endblock %}
