@@ -296,7 +296,7 @@ body {
 
 .project-index {
     .project {
-        background: white;
+        background: lighten($color-wash, 5%);
         //padding: 1.25rem;
         margin-bottom: 2em;
         @include display(flex);
@@ -328,7 +328,7 @@ body {
 }
 
 .project-list {
-    background: white;
+    background: lighten($color-wash, 5%);
     padding: 1.25rem;
 
 
@@ -420,7 +420,7 @@ body {
     }
 
     .project-intro {
-        background: white;
+        background: lighten($color-wash, 5%);
         padding: $spacing-base * 2 $spacing-base * 4;
         font-family: $font-family-heading;
         font-size: 1.5em;
@@ -436,7 +436,7 @@ body {
     }
 
     .project-detail {
-        background: white;
+        background: lighten($color-wash, 5%);
         @include display(flex);
         padding: $spacing-base * 2;
 
