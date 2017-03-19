@@ -496,6 +496,7 @@ body {
         padding-right: 2rem;
 
         .post {
+            @include clearfix;
             clear: both;
             margin-bottom: $spacing-base;
         }
