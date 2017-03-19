@@ -11,25 +11,42 @@
 
         <div class="intro">{{ page.intro|richtext }}</div>
 
-        {% for post in blogpages %}
-        {% with post=post.specific %}
-            <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+        <div class="blog-index">
+            <section>
+            {% for post in blogpages %}
+            {% with post=post.specific %}
+                <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+                
+                {% with post.main_image as main_image %}
+                    {% if main_image %}
+                    <a class="blog-image" href="{% pageurl post %}">{% image main_image width-320 %}
+                    </a>
+                    {% endif %}
+                {% endwith %}
+                
+                    <p>{{ post.intro }}</p>
+                    <a class="link-more" href="{% pageurl post %}">
+                        Read More
+                    </a>
 
-            {% with post.main_image as main_image %}
-                {% if main_image %}{% image main_image fill-160x100 %}{% endif %}
+                    <p>
+                    {% for tag in post.tags.all %}
+                        <a href="{% slugurl 'tags' %}?tag={{ tag }}"><span class="badge--default">{{ tag }}</span></a>
+                    {% endfor %}
+                    </p>
             {% endwith %}
-
-            <p>{{ post.intro }}</p>
-        {% endwith %}
-        {% endfor %}
-        <aside>
-            {% get_taglist as tags for 'blog.BlogPage' %}
-            <ul>
-                {% for tag in tags %}
-                <li><a href="{% slugurl 'tags' %}?tag={{ tag }}"><span class="badge--default">{{ tag }}  {{tag.num_times}} </span></a></li>
-                {% endfor %}
-            </ul>
-        </aside>
+            {% endfor %}
+            </section>
+            <aside>
+                <h3>Tags</h3>
+                {% get_taglist as tags for 'blog.BlogPage' %}
+                <ul class="tags">
+                    {% for tag in tags %}
+                    <li><a href="{% slugurl 'tags' %}?tag={{ tag }}"><span class="badge--default">{{ tag }}  {{tag.num_times}} </span></a></li>
+                    {% endfor %}
+                </ul>
+            </aside>
+        <div>
     </section>
 </main>
 {% endblock %}

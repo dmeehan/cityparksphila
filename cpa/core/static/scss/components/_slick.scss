@@ -1,0 +1,36 @@
+.slick-prev,
+.slick-next {
+    
+    z-index: 999;
+    
+    &:before {
+        text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+    }
+}
+
+.slick-prev {
+    left: 25px;
+    [dir="rtl"] & {
+        left: auto;
+        right: 25px;
+    }
+}
+
+.slick-next {
+    right: 25px;
+    [dir="rtl"] & {
+        left: 25px;
+        right: auto;
+    }
+}
+
+/* Dots */
+.slick-dots {
+    bottom: $spacing-small;
+}
+
+.slick-dotted.slick-slider {
+    margin-bottom: 0;
+}
+
+

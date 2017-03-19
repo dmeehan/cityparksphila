@@ -19,7 +19,7 @@
                 <ul>
             {% endif %}
         </header>
-        <div class="project-gallery">
+        <div class="image-gallery">
         {% for item in page.gallery_images.all %}
             <div>
                 {% image item.image width-1366 as img %}
@@ -47,6 +47,7 @@
             {% endif %}
             </aside>
         </div>
+        <p><a class="link-back" href="{{ page.get_parent.url }}">Return to Projects</a></p>
     </section>
 </main>
 {% endblock %}

@@ -6,7 +6,7 @@
 
 {% block content %}
 <main>
-    <section>
+    <section class="content">
         <h1>{{ page.title }}</h1>
         {% if page.tags.all.count %}
         <div class="tags">
@@ -17,20 +17,23 @@
         {% endif %}
         <p class="meta">{{ page.date }}</p>
 
-        <div class="intro">{{ page.intro }}</div>
-
-        {{ page.body|richtext }}
-
-        {% for item in page.gallery_images.all %}
-            <div>
-                {% image item.image fill-320x240 %}
-                <p>{{ item.caption }}</p>
+        <div class="post">
+            <div class="post-body">
+                {% if page.gallery_images.all %}
+                <div class="post-images">
+                    <div class="image-gallery">
+                        {% for item in page.gallery_images.all %}
+                            <div>
+                                {% image item.image fill-455x340 %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                {{ page.body|richtext }}
             </div>
-        {% endfor %}
-
-        
-
-        <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+        </div>
+        <p><a class="link-back" href="{{ page.get_parent.url }}">Return to Of Interest</a></p>
     </section>
 </main>
 {% endblock %}

@@ -1,10 +1,11 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.contenttypes.models import ContentType
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
-from taggit.models import TaggedItemBase
+from taggit.models import Tag, TaggedItemBase
 
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField

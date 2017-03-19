@@ -17,7 +17,6 @@
         {% compress css %}
         <link rel="stylesheet" type="text/x-scss" href="{% static "scss/app.scss" %}" />
         {% endcompress %}
-
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
@@ -73,6 +72,7 @@
         </footer>
 
         {# Global javascript #}
+        {% compress js %}
         <script>
             $(function() {
               $('a[href*="#"]:not([href="#"])').click(function() {
@@ -88,10 +88,19 @@
                 }
               });
             });
-        </script>
 
+            
+            $(document).ready(function(){
+              $('.image-gallery').slick({
+                dots: true
+              });
+            });
+ 
+        </script>
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
+        {% endcompress %}
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
     </body>
 </html>
