@@ -39,7 +39,7 @@
                     <ul class="tags">
                         {% for tag in tags %}
                         <li>
-                            <a href="{% pageurl page %}?tag={{ tag }}"><span class="badge--{% ifequal tag.name search_tag %}active{% else %}default{% endifequal %}">{{ tag }}  {{tag.num_times}} </span></a>
+                            <a href="{% pageurl page %}?tag={{ tag }}"><span class="badge--{% ifequal tag.name search_tag %}active{% else %}default{% endifequal %}">{{ tag }}  ({{tag.num_times}})</span></a>
                         </li>
                         {% endfor %}
                     </ul>
