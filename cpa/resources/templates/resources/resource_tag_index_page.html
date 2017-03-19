@@ -1,26 +1,54 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
+
+{% load wagtailcore_tags wagtailimages_tags taggit_templatetags2_tags %}
 
 {% block body_class %}body--resources{% endblock %}
 
 {% block content %}
+<main>
+    <section class="content">
+        <h1>
+          {{ page.title }}: {{ search_tag }}
+        </h1>
 
-    {% if request.GET.tag|length %}
-        <h4>Showing pages tagged "{{ request.GET.tag }}"</h4>
-    {% endif %}
+        <div class="intro">{{ page.intro|richtext }}</div>
 
-    {% for blogpage in blogpages %}
 
-          <p>
-              <strong><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></strong><br />
-              <small>Revised: {{ blogpage.latest_revision_created_at }}</small><br />
-              {% if blogpage.author %}
-                <p>By {{ blogpage.author.profile }}</p>
-              {% endif %}
-          </p>
-
-    {% empty %}
-        No pages found with that tag.
-    {% endfor %}
-
+        <div class="resource-index">
+            <section>
+                {% for resource in resourcepages %}
+                <div class="resource">
+                {% with resource=resource.specific %}
+                    <h2><a href="{% pageurl resource %}">{{ resource.title }}</a></h2>
+                    <ul class="tags">
+                    {% for tag in resource.tags.all %}
+                        <li>
+                            <a href="{% slugurl 'resourcetags' %}?tag={{ tag }}"><span class="badge--default">{{ tag }}</span></a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                    {{ resource.intro|richtext }}
+                {% endwith %}
+                </div>
+                {% empty %}
+                    No pages found with that tag.
+                {% endfor %}
+            </section>
+            {% get_taglist as tags for 'resources.resourcepage' %}
+            {% if tags %}
+            <aside>
+                <h3>Resource Categories</h3>
+                    <ul class="tags">
+                        {% for tag in tags %}
+                        <li>
+                            <a href="{% slugurl 'resourcetags' %}?tag={{ tag.name }}">
+                              <span class="badge--{% ifequal tag.name search_tag %}active{% else %}default{% endifequal %}">{{ tag.name }} ({{tag.num_times}})</span></a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+            </aside>
+            {% endif %}
+        </div>
+    </section>
+</main>
 {% endblock %}

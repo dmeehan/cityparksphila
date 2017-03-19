@@ -14,7 +14,7 @@
         {% if page.tags.all.count %}
         <div class="tags">
             {% for tag in page.tags.all %}
-                <a href="{% slugurl 'tags' %}?tag={{ tag }}"><span class="badge--default">{{ tag }}</span></a>
+                <a href="{% slugurl 'resourcetags' %}?tag={{ tag }}"><span class="badge--default">{{ tag }}</span></a>
             {% endfor %}
         </div>
         {% endif %}

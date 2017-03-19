@@ -1,24 +1,59 @@
-{% extends "base.html" %}
-{% load wagtailcore_tags %}
+ {% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags taggit_templatetags2_tags %}
+
 {% block body_class %}body--blog{% endblock %}
+
 {% block content %}
+<main>
+    <section class="content">
+        <h1>{{ page.title }}</h1>
 
-    {% if request.GET.tag|length %}
-        <h4>Showing pages tagged "{{ request.GET.tag }}"</h4>
-    {% endif %}
+        <div class="intro">{{ page.intro|richtext }}</div>
 
-    {% for blogpage in blogpages %}
+        <div class="blog-index">
+            <section>
+            {% for post in blogpages %}
+            <div class="post">
+            {% with post=post.specific %}
+                <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+                
+                {% with post.main_image as main_image %}
+                    {% if main_image %}
+                    <a class="blog-image" href="{% pageurl post %}">{% image main_image width-320 %}
+                    </a>
+                    {% endif %}
+                {% endwith %}
+                
+                    <p>{{ post.intro }}</p>
+                    <a class="link-more" href="{% pageurl post %}">
+                        Read More
+                    </a>
 
-          <p>
-              <strong><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></strong><br />
-              <small>Revised: {{ blogpage.latest_revision_created_at }}</small><br />
-              {% if blogpage.author %}
-                <p>By {{ blogpage.author.profile }}</p>
-              {% endif %}
-          </p>
-
-    {% empty %}
-        No pages found with that tag.
-    {% endfor %}
-
+                    <p>
+                    {% for tag in post.tags.all %}
+                        <a href="{% slugurl 'ofinteresttags' %}?tag={{ tag }}"><span class="badge--default">{{ tag }}</span></a>
+                    {% endfor %}
+                    </p>
+            {% endwith %}
+            </div>
+            {% endfor %}
+            </section>
+            {% get_taglist as tags for 'blog.BlogPage' %}
+            {% if tags %}
+            <aside>
+                <h3>Tags</h3>
+                    <ul class="tags">
+                        {% for tag in tags %}
+                        <li>
+                            <a href="{% slugurl 'ofinteresttags' %}?tag={{ tag.name }}">
+                              <span class="badge--{% ifequal tag.name search_tag %}active{% else %}default{% endifequal %}">{{ tag.name }} ({{tag.num_times}})</span></a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+            </aside>
+            {% endif %}
+        <div>
+    </section>
+</main>
 {% endblock %}

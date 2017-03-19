@@ -21,9 +21,14 @@ class ProjectsIndexPage(Page):
     ]
 
     def get_context(self, request):
-        # Update context to include only published projects, ordered by reverse-chron
         context = super(ProjectsIndexPage, self).get_context(request)
-        projects = self.get_children().live().order_by('-first_published_at')
+        tag = request.GET.get('tag')
+        # Update context to include only published posts, ordered by reverse-chron
+        if tag:
+            context['search_tag'] = tag
+            projects = ProjectPage.objects.live().filter(tags__name=tag).order_by('-first_published_at')
+        else:
+            projects = ProjectPage.objects.live().order_by('-first_published_at')
         context['projects'] = projects
         return context
 
@@ -72,6 +77,8 @@ class ProjectPageGalleryImage(Orderable):
         FieldPanel('caption'),
     ]
 
+
+'''
 class ProjectTagIndexPage(Page):
 
     def get_context(self, request):
@@ -84,3 +91,4 @@ class ProjectTagIndexPage(Page):
         context = super(ProjectTagIndexPage, self).get_context(request)
         context['projects'] = projects
         return context
+'''

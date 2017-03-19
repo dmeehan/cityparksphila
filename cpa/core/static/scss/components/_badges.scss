@@ -4,6 +4,7 @@ $badges: (
   "error": $color-error,
   "notice": $color-notice,
   "success": $color-success,
+  "active": $color-active,
 ) !default;
 
 @each $badge-type, $color in $badges {
@@ -19,4 +20,8 @@ $badges: (
     line-height: 1;
     padding: 0.4em 1.2em;
   }
+}
+
+.badge--active {
+  color: white;
 }

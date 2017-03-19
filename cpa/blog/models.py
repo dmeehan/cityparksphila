@@ -24,9 +24,14 @@ class BlogIndexPage(Page):
         verbose_name = "Of Interest Index Page"
 
     def get_context(self, request):
-        # Update context to include only published posts, ordered by reverse-chron
         context = super(BlogIndexPage, self).get_context(request)
-        blogpages = self.get_children().live().order_by('-first_published_at')
+        tag = request.GET.get('tag')
+        # Update context to include only published posts, ordered by reverse-chron
+        if tag:
+            context['search_tag'] = tag
+            blogpages = BlogPage.objects.live().filter(tags__name=tag).order_by('-first_published_at')
+        else:
+            blogpages = BlogPage.objects.live().order_by('-first_published_at')
         context['blogpages'] = blogpages
         return context
 
@@ -80,6 +85,7 @@ class BlogPageGalleryImage(Orderable):
     class Meta:
         verbose_name = "Of Interest Gallery Image"
 
+'''
 class BlogTagIndexPage(Page):
 
     def get_context(self, request):
@@ -90,5 +96,10 @@ class BlogTagIndexPage(Page):
 
         # Update template context
         context = super(BlogTagIndexPage, self).get_context(request)
+        context['search_tag'] = tag
         context['blogpages'] = blogpages
         return context
+
+    class Meta:
+        verbose_name = "Of Interest Tag Index Page"
+'''

@@ -7,7 +7,7 @@
 {% block content %}
 <main>
     <section class="content">
-        <h1>{{ page.title }}</h1>
+        <h1>{{ page.title }}{% if search_tag %}: {{ search_tag }}{% endif %}</h1>
 
         <div class="intro">{{ page.intro|richtext }}</div>
 
@@ -21,13 +21,15 @@
                     <ul class="tags">
                     {% for tag in resource.tags.all %}
                         <li>
-                            <a href="{% slugurl 'tags' %}?tag={{ tag }}"><span class="badge--default">{{ tag }}</span></a>
+                            <a href="{% pageurl page %}?tag={{ tag }}"><span class="badge--default">{{ tag }}</span></a>
                         </li>
                     {% endfor %}
                     </ul>
                     {{ resource.intro|richtext }}
                 {% endwith %}
                 </div>
+                {% empty %}
+                    No resources found with that tag.
                 {% endfor %}
             </section>
             {% get_taglist as tags for 'resources.resourcepage' %}
@@ -37,7 +39,7 @@
                     <ul class="tags">
                         {% for tag in tags %}
                         <li>
-                            <a href="{% slugurl 'tags' %}?tag={{ tag }}"><span class="badge--default">{{ tag }} ({{tag.num_times}})</span></a>
+                            <a href="{% pageurl page %}?tag={{ tag }}"><span class="badge--{% ifequal tag.name search_tag %}active{% else %}default{% endifequal %}">{{ tag }}  {{tag.num_times}} </span></a>
                         </li>
                         {% endfor %}
                     </ul>

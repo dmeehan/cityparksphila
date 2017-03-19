@@ -27,7 +27,13 @@ class ResourcesIndexPage(Page):
     def get_context(self, request):
         # Update context to include only published resources, ordered by reverse-chron
         context = super(ResourcesIndexPage, self).get_context(request)
-        resourcepages = self.get_children().live().order_by('-first_published_at')
+        tag = request.GET.get('tag')
+        # Update context to include only published posts, ordered by reverse-chron
+        if tag:
+            context['search_tag'] = tag
+            resourcepages = ResourcePage.objects.live().filter(tags__name=tag).order_by('-first_published_at')
+        else:
+            resourcepages = ResourcePage.objects.live().order_by('-first_published_at')
         context['resourcepages'] = resourcepages
         return context
 
@@ -57,15 +63,18 @@ class ResourcePage(Page):
         FieldPanel('tags'),
     ]
 
+'''
 class ResourceTagIndexPage(Page):
 
     def get_context(self, request):
 
         # Filter by tag
         tag = request.GET.get('tag')
-        resourcepages = ResourcePage.objects.filter().filter(tags__name=tag)
+        resourcepages = ResourcePage.objects.live().filter(tags__name=tag).order_by('-first_published_at')
 
         # Update template context
         context = super(ResourceTagIndexPage, self).get_context(request)
-        context['resourcespages'] = resourcepages
+        context['resourcepages'] = resourcepages
+        context['search_tag'] = tag
         return context
+'''
