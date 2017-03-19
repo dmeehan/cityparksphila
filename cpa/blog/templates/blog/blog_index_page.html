@@ -39,15 +39,18 @@
             </div>
             {% endfor %}
             </section>
+            {% get_taglist as tags for 'blog.BlogPage' %}
+            {% if tags %}
             <aside>
                 <h3>Tags</h3>
-                {% get_taglist as tags for 'blog.BlogPage' %}
+                
                 <ul class="tags">
                     {% for tag in tags %}
                     <li><a href="{% slugurl 'tags' %}?tag={{ tag }}"><span class="badge--default">{{ tag }}  {{tag.num_times}} </span></a></li>
                     {% endfor %}
                 </ul>
             </aside>
+            {% endif %}
         <div>
     </section>
 </main>
