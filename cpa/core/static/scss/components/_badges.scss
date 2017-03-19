@@ -1,10 +1,10 @@
 $badges: (
   "alert": $color-alert,
-  "default": $color-primary,
+  "default": $color-secondary,
   "error": $color-error,
   "notice": $color-notice,
   "success": $color-success,
-  "active": $color-active,
+  "active": $color-primary,
 ) !default;
 
 @each $badge-type, $color in $badges {
