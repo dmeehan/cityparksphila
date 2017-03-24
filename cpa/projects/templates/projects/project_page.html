@@ -22,7 +22,7 @@
         <div class="image-gallery">
         {% for item in page.gallery_images.all %}
             <div>
-                {% image item.image width-1366 as img %}
+                {% image item.image fill-1366x765 as img %}
                 <img src="{{ img.url }}" />
             </div>
         {% endfor %}
