@@ -1,6 +1,6 @@
 @import "bourbon/bourbon";
-@import "base/base";
 @import "neat/neat";
+@import "base/base";
 
 @import "components/badges";
 @import "components/slick";
@@ -19,11 +19,12 @@ body {
     background: $color-wash;
 
     > header {
-        padding: $spacing-base 0;
+        padding: $spacing-small;
         background: lighten($color-wash, 5%);
        
         > div {
             @include display(flex);
+            @include flex-wrap(wrap);
             @include align-items(center);
             max-width: 1388px;
             margin: 0 auto;
@@ -44,7 +45,7 @@ body {
                     margin-right: 0.5rem;
                     font-family: 'Nunito', Helvetica, Arial, sans-serif;
                     font-weight: 100;
-                    font-size: 2.5rem;
+                    font-size: 1.5rem;
                     color: lighten($color-wash, 5%);
                     background: $color-primary;
                     border-radius: 0.25rem;
@@ -52,7 +53,7 @@ body {
                 }
 
                 span {
-                    font-size: 1.25rem;
+                    font-size: 0.875rem;
                     margin-bottom: 0;
                     font-family: 'Nunito', Helvetica, Arial, sans-serif;
                     text-transform: uppercase;
@@ -62,12 +63,23 @@ body {
                     display: block;
                     color: $medium-gray;
                 }
-            }
+            } 
 
-            
+            @include media($screen-large) {
+                > a {
+                   &::before {
+                     font-size: 2.5rem;
+                   } 
+
+                   span {
+                     font-size: 1.25rem;
+                   }
+                }
+            } 
         }
 
         nav {
+            display: none;
             margin-left: auto;
             ul {
                 @include display(flex);
@@ -75,17 +87,37 @@ body {
                     padding: 0 $spacing-small;
                 }
             }
+
+            @include media($screen-large) {
+                display: block;
+            }
         }
-        //background: shade($color-wash, 30%);
+
+        @include media($screen-large) {
+            padding: $spacing-base;
+        }
+        
+        @include media($screen-max) {
+            padding: $spacing-base 0;
+        }
+        
     }
 
     > main {
         //@include flex(1);
 
         > section {
-            padding-top: 3em;
-            max-width: 1388px;
+            padding: $spacing-small;
+            max-width: 1366px;
             margin: 0 auto;
+
+            @include media($screen-large) {
+                padding: $spacing-base;
+            }
+
+            @include media($screen-max) {
+                padding: 3em 0 0 0;
+            }
         }
     }
 
@@ -96,8 +128,17 @@ body {
         margin-top: 3rem;
 
         > section {
-            max-width: 1388px;
+            max-width: 1366px;
             margin: 0 auto;
+            padding: 0 $spacing-small;
+
+            @include media($screen-large) {
+                padding: 0 $spacing-base;
+            }
+
+            @include media($screen-max) {
+                padding: 0 0 0 0;
+            }
         }
     }
 }
@@ -107,7 +148,7 @@ body {
     max-width: none;
     height: 400px;
     background: rgba(0, 0, 0, 0.5);
-    padding-top: 0;
+    padding: 0;
 
     ul {
         @include flex(1);
@@ -305,12 +346,11 @@ body {
 .project-index {
     .project {
         background: lighten($color-wash, 3%);
-        //padding: 1.25rem;
         margin-bottom: 2em;
-        @include display(flex);
+        
 
         .project-image {
-            width: 50%;
+            
 
             img {
                 display: block;
@@ -320,12 +360,7 @@ body {
         }
         
         .project-content {
-            @include display(flex);
-            @include flex-direction(column);
-            @include justify-content(space-between);
-            width: 50%;
             padding: $spacing-base;
-
             .intro {
                 text-align: left;
                 margin: 0;
@@ -338,6 +373,23 @@ body {
             }
         }
     }
+
+    @include media($screen-large) {
+        .project {
+            @include display(flex);
+
+            .project-image {
+                width: 50%;
+            }
+            .project-content {
+                @include display(flex);
+                @include flex-direction(column);
+                @include justify-content(space-between);
+                width: 50%;
+                padding: $spacing-base;
+            }
+        }
+    }
 }
 
 .project-list {
@@ -345,10 +397,7 @@ body {
     padding: 1.25rem;
 
     ul {
-        @include display(flex);
-
         > li {
-            @include flex(1);
             margin-right: 1.25rem;
             position: relative;
 
@@ -403,13 +452,23 @@ body {
             margin-left: 0.25rem;
         }
     }
+
+    @include media($screen-large) {
+        ul {
+            @include display(flex);
+
+            > li {
+                @include flex(1);
+            }
+        }
+    }
 }
 
 .project {
     > header {
         @include display(flex);
         @include align-items(center);
-        margin-bottom: 2.25rem;
+        margin-bottom: $spacing-small;
 
         h1 {
             margin-bottom: 0;
@@ -433,9 +492,9 @@ body {
 
     .project-intro {
         background: lighten($color-wash, 5%);
-        padding: $spacing-base * 2 $spacing-base * 4;
+        padding: $spacing-base;
         font-family: $font-family-heading;
-        font-size: 1.5em;
+        font-size: 1.25em;
         font-weight: 500;
         font-style: italic;
         line-height: 1.8;
@@ -449,12 +508,11 @@ body {
 
     .project-detail {
         background: lighten($color-wash, 5%);
-        @include display(flex);
-        padding: $spacing-base * 2;
+        padding: $spacing-base;
+        
 
         > aside {
-            padding-left: $spacing-base * 2;
-            @include flex(1 0 25%);
+            
 
             .meta {
                 margin-top: 0;
@@ -469,6 +527,33 @@ body {
             }
         }
     }
+
+    @include media($screen-large) {
+        > header {
+            margin-bottom: 2.25rem;
+        }
+
+        .project-detail {
+            @include display(flex);
+            padding: $spacing-base * 2;
+
+            > aside {
+                padding-left: $spacing-base * 2;
+                @include flex(1 0 25%);
+            }
+        }
+
+        .project-intro {
+            
+            padding: $spacing-base * 2 $spacing-base * 4;
+            font-size: 1.5em;
+
+            + .project-detail {
+                padding-top: 0;
+            }
+        }
+        
+    }
 }
 
 .of-interest {
@@ -477,10 +562,10 @@ body {
     }
     
     ul {
-      @include display(flex); 
+      //@include display(flex); 
       
       > li {
-            @include flex(1);
+            //@include flex(1);
             margin-right: 1.25rem;
 
             &:last-child {
@@ -490,18 +575,25 @@ body {
             img {
                 display: block;
                 margin-bottom: 1rem;
+                width: 100%;
             }
        } 
+    }
+
+    @include media($screen-large) {
+        ul {
+            @include display(flex);
+
+            > li {
+                @include flex(1);
+            }
+        }
     }
 }
 
 .resource-index, .blog-index {
-    @include display(flex);
+    
     > section {
-
-        width: 67%;
-        padding-right: 2rem;
-
         .post {
             @include clearfix;
             clear: both;
@@ -509,13 +601,16 @@ body {
         }
 
         .blog-image {
-            float: left;
-            margin-right: $spacing-base;
+            display: block;
+
+            img {
+                width: 100%;
+            }
         }
     }
 
     > aside {
-        width:33%;
+        
         padding: $spacing-base;
         background: lighten($color-wash, 3%);
 
@@ -547,14 +642,48 @@ body {
             }
         }
     }
+
+    @include media($screen-large) {
+        @include display(flex);
+
+        > section {
+            width: 67%;
+            padding-right: 2rem;
+
+            .blog-image {
+                float: left;
+                margin-right: $spacing-base;
+            }
+        }
+
+        > aside {
+            width:33%;
+        }
+    }
 }
 
 .post {
     .post-body {
+        .rich-text {
+            order: 0;
+        }
+
         .post-images {
-            width: 33%;
+            margin-bottom: $spacing-small;
+            order: 1;
+        }
+    }
+
+    @include media($screen-large) {
+        .post-images {
+            order: 0;
+            width: 40%;
             float: left;
             padding-right: $spacing-base;
+        }
+
+        .rich-text {
+            order: 1;
         }
     }
 }
@@ -564,9 +693,12 @@ body {
 }
 
 .contact-form, .contact-address {
-    float: left;
-    width: 50%;
     padding-top: 4rem;
+
+    @include media($screen-large) {
+        float: left;
+        width: 50%;
+    }
 }
 
 .contact-form {

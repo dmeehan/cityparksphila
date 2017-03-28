@@ -24,7 +24,8 @@
                     <div class="image-gallery">
                         {% for item in page.gallery_images.all %}
                             <div>
-                                {% image item.image fill-455x340 %}
+                                {% image item.image fill-455x340 as img %}
+                                <img src="{{ img.url }}" />
                             </div>
                         {% endfor %}
                     </div>
