@@ -79,17 +79,75 @@ body {
         }
 
         nav {
-            display: none;
             margin-left: auto;
             ul {
-                @include display(flex);
+                @include transition(all 0.5s ease-in-out);
+                position: fixed;
+                top: 0;
+                right: -100%;
+                background: transparentize($color-wash, 0.3);
+                padding: $spacing-base*2 0 $spacing-small 0;
+                
                 li {
-                    padding: 0 $spacing-small;
+                    padding: $spacing-small $spacing-base*2 $spacing-small $spacing-base;
+                }
+
+                @include media($screen-large) {
+                    position: static;
+                    background: none;
+                    padding: 0 $spacing-small 0;
+                    @include display(flex);
+
+                    li {
+                        padding: 0 0 0 $spacing-base;
+                    }
                 }
             }
 
-            @include media($screen-large) {
+            label {
+                z-index: 9999;
+                position: fixed;
+                top: $spacing-small;
+                right: $spacing-small;
+                margin: 0;
+                background: transparentize($color-wash, 0.3);
                 display: block;
+                width: 40px;
+                height: 40px;
+                border-radius: 0.25rem;
+                color: $color-accent;
+                font-weight: 700;
+                line-height: 40px;
+                font-size: 1.5em;
+                text-align: center;
+
+                @include media($screen-large) {
+                  display: none;
+                }
+              }
+
+              input[type=checkbox] {
+                z-index: 9999;
+                position: fixed;
+                top: $spacing-small/2;
+                right: $spacing-small;
+                opacity: 0;
+
+                &:checked {
+                  + ul {
+                    
+                    right: 0;
+                    visibility: visible;
+                    opacity: 1;
+                    z-index: 9998;
+                    //max-height: 400px;
+                    //min-width: 400px;
+                  }
+                }
+
+                @include media($screen-large) {
+                  display: none;
+                }
             }
         }
 
@@ -154,67 +212,69 @@ body {
         @include flex(1);
         @include display(flex);
 
-        &:hover {
-            > li:nth-child(5){
-                @include flex(1 1 40px);
+        @include media($screen-medium) {
+            &:hover {
+                > li:nth-child(5){
+                    @include flex(1 1 40px);
 
-                > img {
-                    left: 0;
-                }
-            }
-        }
-
-        > li {
-            @include transition(all 0.5s ease-in-out);
-            @include flex(1 1 40px);
-            position: relative;
-            padding: 0;
-            margin: 0;
-            overflow: hidden;
-
-            &:nth-child(5) {
-                @include flex(0 0 640px);
-
-                > img, > a {
-                    left: 0;
-                }
-
-                &:hover {
-                    @include flex(0 0 640px);
-                    
-                    > a, > img {
+                    > img {
                         left: 0;
                     }
                 }
             }
 
-            &:hover {
-                @include flex(0 0 640px);
+            > li {
                 @include transition(all 0.5s ease-in-out);
+                @include flex(1 1 40px);
+                position: relative;
+                padding: 0;
+                margin: 0;
+                overflow: hidden;
+
+                &:nth-child(5) {
+                    @include flex(0 0 640px);
+
+                    > img, > a {
+                        left: 0;
+                    }
+
+                    &:hover {
+                        @include flex(0 0 640px);
+                        
+                        > a, > img {
+                            left: 0;
+                        }
+                    }
+                }
+
+                &:hover {
+                    @include flex(0 0 640px);
+                    @include transition(all 0.5s ease-in-out);
+
+                    > a, > img {
+                        @include transition(all 0.5s ease-in-out);
+                        left: 0;
+                    }
+                }
 
                 > a, > img {
                     @include transition(all 0.5s ease-in-out);
-                    left: 0;
+                    position: absolute;
+                    left: -320px;
+                    width: auto;
+                    height: auto;
+                    max-width: none;
                 }
+
+                > a > img {
+                    width: auto;
+                    height: auto;
+                    max-width: none;
+                }
+
+
+
             }
-
-            > a, > img {
-                @include transition(all 0.5s ease-in-out);
-                position: absolute;
-                left: -320px;
-                width: auto;
-                height: auto;
-                max-width: none;
-            }
-
-            > a > img {
-                width: auto;
-                height: auto;
-                max-width: none;
-            }
-
-
-
         }
     }
 }
