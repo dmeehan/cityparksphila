@@ -769,9 +769,10 @@ body {
 }
 
 .contact-form, .contact-address {
-    padding-top: 4rem;
+    //padding-top: 4rem;
 
     @include media($screen-large) {
+        padding-top: 4rem;
         float: left;
         width: 50%;
     }
@@ -786,9 +787,12 @@ body {
 
 .contact-address {
     font-family: $font-family-heading;
-    font-size: 1.5rem;
-    color: white;
+     color: white;
     font-weight: 100;
+
+    @include media($screen-large) {
+        font-size: 1.5rem;
+    }
 }
 
 
