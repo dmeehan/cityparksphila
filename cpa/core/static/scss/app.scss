@@ -232,33 +232,40 @@ body {
                 overflow: hidden;
 
                 &:nth-child(5) {
+                    @include flex(0 0 40%);
+
+                    > img, > a {
+                        left: 0;
+                    }
+
+                    &:hover {
+                        @include flex(0 0 40%);
+                        
+                        > a, > img {
+                            left: 0;
+                        }
+                    }
 
                     @include media($screen-large) {
                         @include flex(0 0 640px);
 
-                        > img, > a {
-                            left: 0;
-                        }
-
-                        &:hover {
+                        :hover {
                             @include flex(0 0 640px);
-                            
-                            > a, > img {
-                                left: 0;
-                            }
                         }
                     }
                 }
 
                 &:hover {
+                    @include flex(0 0 40%);
+                    @include transition(all 0.5s ease-in-out);
+
+                    > a, > img {
+                        @include transition(all 0.5s ease-in-out);
+                        left: 0;
+                    }
+
                     @include media($screen-large) {
                         @include flex(0 0 640px);
-                        @include transition(all 0.5s ease-in-out);
-
-                        > a, > img {
-                            @include transition(all 0.5s ease-in-out);
-                            left: 0;
-                        }
                     }
                 }
 
