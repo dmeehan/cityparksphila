@@ -554,8 +554,7 @@ body {
 
 .project {
     > header {
-        @include display(flex);
-        @include align-items(center);
+        
         margin-bottom: $spacing-small;
 
         h1 {
@@ -563,10 +562,22 @@ body {
         }
 
         .tags {
-            margin-left: auto;
+            
             @include display(flex);
             > li {
                 padding-left: $spacing-small/2;
+            }
+        }
+
+        @include media($screen-large) {
+            @include display(flex);
+            @include align-items(center);
+
+            .tags {
+                margin-left: auto;
+                > ul {
+                    margin-bottom: 0;
+                }
             }
         }
     }
