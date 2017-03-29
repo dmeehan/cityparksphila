@@ -201,6 +201,19 @@ body {
     }
 }
 
+.tags {
+    > a {
+        display: inline-block;
+        margin-bottom: 0.25rem;
+    }
+
+    > ul {
+        > li {
+            margin-bottom: 0.25rem;
+        }
+    }
+}
+
 .banner {
     @include display(flex);
     max-width: none;
@@ -711,11 +724,18 @@ body {
 
         .tags {
             @include display(flex);
+            @include flex-wrap(wrap);
             margin-bottom: $spacing-base;
 
             > li {
                 margin-left: $spacing-small/3;
+
+                span {
+                    white-space: no-wrap;
+                }
             }
+
+
         }
     }
 
