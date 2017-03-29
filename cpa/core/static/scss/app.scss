@@ -557,9 +557,7 @@ body {
         
         margin-bottom: $spacing-small;
 
-        h1 {
-            margin-bottom: 0;
-        }
+        
 
         .tags {
             
@@ -573,10 +571,19 @@ body {
             @include display(flex);
             @include align-items(center);
 
+            h1 {
+                margin-bottom: 0;
+            }
+
             .tags {
                 margin-left: auto;
                 > ul {
                     margin-bottom: 0;
+
+                    > li {
+                        padding-left: 0;
+                        padding-right: $spacing-small/2;
+                    }
                 }
             }
         }
