@@ -233,7 +233,7 @@ body {
 
                 &:nth-child(5) {
 
-                    @include media($screen-medium) {
+                    @include media($screen-large) {
                         @include flex(0 0 640px);
 
                         > img, > a {
@@ -251,7 +251,7 @@ body {
                 }
 
                 &:hover {
-                    @include media($screen-medium) {
+                    @include media($screen-large) {
                         @include flex(0 0 640px);
                         @include transition(all 0.5s ease-in-out);
 
