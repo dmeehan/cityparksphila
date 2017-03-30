@@ -4,7 +4,7 @@ $badges: (
   "error": $color-error,
   "notice": $color-notice,
   "success": $color-success,
-  "active": $color-primary,
+  "active": tint($color-primary, 50%),
 ) !default;
 
 @each $badge-type, $color in $badges {
@@ -23,5 +23,5 @@ $badges: (
 }
 
 .badge--active {
-  color: white;
+  shade($color-primary, 50%);
 }
