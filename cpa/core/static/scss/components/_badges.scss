@@ -1,17 +1,17 @@
 $badges: (
   "alert": $color-alert,
-  "default": $color-primary,
+  "default": tint($color-primary, 50%),
   "error": $color-error,
   "notice": $color-notice,
   "success": $color-success,
-  "active": tint($color-primary, 50%),
+  "active": $color-primary,
 ) !default;
 
 @each $badge-type, $color in $badges {
   .badge--#{$badge-type} {
     background-color: $color;
     border-radius: $font-size-small * 5;
-    //color: darken($color, 60%);
+    color: shade($color, 60%);
     color: white;
     font-family: $font-family-heading;
     font-weight: 700;
@@ -23,5 +23,5 @@ $badges: (
 }
 
 .badge--active {
-  color: shade($color-primary, 50%);
+  color: white;
 }
