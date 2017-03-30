@@ -559,8 +559,12 @@ body {
 
         .tags {
             @include display(flex);
+            @include flex-wrap(wrap);
             > li {
                 padding-left: $spacing-small/2;
+                span {
+                    white-space: nowrap;
+                }
             }
             margin-bottom: $spacing-small;
         }
@@ -748,7 +752,7 @@ body {
                 margin-left: $spacing-small/3;
 
                 span {
-                    white-space: no-wrap;
+                    white-space: nowrap;
                 }
             }
 
