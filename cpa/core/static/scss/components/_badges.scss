@@ -23,5 +23,5 @@ $badges: (
 }
 
 .badge--active {
-  shade($color-primary, 50%);
+  color: shade($color-primary, 50%);
 }
