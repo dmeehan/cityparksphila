@@ -9,7 +9,9 @@
     <section class="content">
         <h1>{{ page.title }}{% if search_tag %}: {{ search_tag }}{% endif %}</h1>
 
-        <div class="intro">{{ page.intro|richtext }}</div>
+        {% if page.intro %}
+        {{ page.intro|richtext }}
+        {% endif %}
 
         <div class="blog-index">
             <section>

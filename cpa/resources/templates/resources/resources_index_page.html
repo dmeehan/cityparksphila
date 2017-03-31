@@ -8,17 +8,28 @@
 <main>
     <section class="content">
         <h1>{{ page.title }}{% if search_tag %}: {{ search_tag }}{% endif %}</h1>
-
-        <div class="intro">{{ page.intro|richtext }}</div>
-
-
+        {% if page.intro %}
+        {{ page.intro|richtext }}
+        {% endif %}
         <div class="resource-index">
             <section>
                 {% for resource in resourcepages %}
                 <div class="resource">
                 {% with resource=resource.specific %}
-                    <h2><a href="{% pageurl resource %}">{{ resource.title }}</a></h2>
-                    {{ resource.intro|richtext }}
+                    <h2>{{ resource.title }}</h2>
+                    {% if resource.intro %}
+                    <h3>{{ resource.intro|richtext }}</h3>
+                    {% endif %}
+                    {% if resource.tags.all.count %}
+                    <ul class="tags">
+                        {% for tag in resource.tags.all %}
+                            <li><a href="{% pageurl page %}?tag={{ tag }}"><span class="badge--default">{{ tag }}</span></a></li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {{ resource.description|richtext|truncatechars_html:200 }}
+                
+                    <a class="link-more" href="{% pageurl resource %}">Read More</a>
                 {% endwith %}
                 </div>
                 {% empty %}
@@ -41,4 +52,4 @@
         </div>
     </section>
 </main>
-{% endblock %}
+{% endblock %}truncatechars_html:9
