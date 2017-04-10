@@ -46,7 +46,7 @@ $color-font-base: $dark-gray;
 $color-action: $color-accent;
 
 // Border
-$color-border-base: $medium-gray;
+$color-border-base: darken($color-wash, 20%);
 $border-base: 1px solid $color-border-base;
 
 // Background Colors
