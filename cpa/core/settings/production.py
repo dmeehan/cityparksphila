@@ -4,12 +4,12 @@ import os
 
 from .base import *
 
-DEBUG = True
+DEBUG = False
 
 #==============================================================================
 # Site
 #==============================================================================
-ALLOWED_HOSTS = ['cityparksphila.org', 'www.cityparksphila.org', 'dev.cityparksphila.org', 'smtp.webfaction.com']
+ALLOWED_HOSTS = ['cityparksphila.org', 'www.cityparksphila.org', 'dev.cityparksphila.org', 'cityparksphila.opalstacked.com', 'smtp.webfaction.com']
 
 BASE_URL = 'http://cityparksphila.org'
 
@@ -68,7 +68,7 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:31095',
+        'LOCATION': 'redis://127.0.0.1:5364',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
